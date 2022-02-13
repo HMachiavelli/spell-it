@@ -1,0 +1,20 @@
+@font-face {
+  font-family: 'RedHat';
+  src: local('RedHat'), url(./assets/fonts/RedHatText-Regular.ttf) format('truetype');
+  /* other formats include: 'woff2', 'truetype, 'opentype',
+                            'embedded-opentype', and 'svg' */
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+iframe {
+  pointer-events: none;
+}
+
+* {
+  font-family: 'RedHat', sans-serif;
+}

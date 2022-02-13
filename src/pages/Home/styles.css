@@ -1,0 +1,159 @@
+.app {
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #EFEFEF;
+  transition: 0.2s;
+}
+
+.login-container {
+  width: 50rem;
+  min-height: 25rem;
+  background-color: #87B3F5;
+  border-radius: 10px;
+  display: flex;
+}
+
+.login-container > div {
+  padding: 2rem;
+  min-height: 100%;
+}
+
+.login-container h1 {
+  margin-top: 0;
+}
+
+.login-container p {
+  margin-top: 0;
+}
+
+.login-container .login-left {
+  width: 40%;
+  color: #FFFFFF;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-container .login-left a {
+  margin-top: 2rem;
+  padding: 0.3rem 3rem;
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 5px;
+  border: solid 1px #FFFFFF;
+  color: #FFFFFF;
+  text-decoration: none;
+  width: 6rem;
+  transition: 0.2s;
+}
+
+.login-container .login-left a:hover {
+  background: #FFFFFF;
+  color: #87B3F5;
+}
+
+.login-container .login-right {
+  width: 60%;
+  background-color: #FFFFFF;
+  border-radius: 0 10px 10px 0;
+}
+
+.login-container .login-right h1 {
+  color: #87B3F5;
+}
+
+.login-container .login-right hr {
+  border-top: 1px solid #87B3F5;
+  margin-bottom: 1rem;
+}
+
+.login-container .login-right > div {
+  padding: 0 2.3rem;
+}
+
+.login-container .login-right .login-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.login-container .login-right .login-form input {
+  height: 1.5rem;
+  padding: 0.5rem 0 0.5rem 0.6rem;
+  margin: 0.7rem 0;
+  border: none;
+  background-color: #EFEFEF;
+  border-radius: 5px;
+}
+
+.login-container .login-right .login-form .login-action {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 1rem;
+  align-items: center;
+}
+
+.login-container .login-right .login-form .login-action button {
+  padding: 0.5rem 3rem;
+  font-size: 18px;
+  background-color: #87B3F5;
+  border-radius: 5px;
+  border: solid 1px #FFFFFF;
+  color: #FFFFFF;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.login-container .login-right .login-form .login-action button:hover {
+  background: #FFFFFF;
+  color: #87B3F5;
+  border: solid 1px #87B3F5;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 850px) {
+  .login-container {
+    width: 40rem;  
+  }
+
+  .login-container .login-left h1 {
+    font-size: 1.5rem;
+  }
+
+  .login-container .login-right > div {
+    padding: 0 1.3rem;
+  }
+
+  .login-container .login-right .login-form .login-action {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .login-container .login-right .login-form .login-action button {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .app {
+    background-color: #87B3F5;
+  }
+
+  .login-container {
+    display: none;
+  }
+
+  .login-mobile {
+    display: flex;
+  }
+}
