@@ -9,6 +9,10 @@
   transition: 0.2s;
 }
 
+.login-container-mobile {
+  display: none;
+}
+
 .login-container {
   width: 50rem;
   min-height: 25rem;
@@ -83,7 +87,7 @@
   justify-content: space-between;
 }
 
-.login-container .login-right .login-form input {
+.login-container .login-right .login-form input, .login-container-mobile .login-form input {
   height: 1.5rem;
   padding: 0.5rem 0 0.5rem 0.6rem;
   margin: 0.7rem 0;
@@ -153,7 +157,32 @@
     display: none;
   }
 
-  .login-mobile {
+  .login-container-mobile {
     display: flex;
+    flex-direction: column;
+    padding: 3rem;
+  }
+
+  .login-container-mobile h1 {
+    color: #FFFFFF;
+  }
+
+  .login-container-mobile .login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .login-container-mobile .login-form .login-action button {
+    width: 100%;
+    margin: 1rem 0;
+    padding: 0.5rem 3rem;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    color: #FFFFFF;
+    text-decoration: none;
+    transition: 0.2s;
+    background-color: #73AD69;
   }
 }

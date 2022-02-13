@@ -1,13 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
+import Login from './pages/Login';
+import AdminApp from './pages/Admin';
 import './index.css';
-import App from './pages/Home';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Login />} />
+      <Route path="/admin" element={<AdminApp />} />
+    </Routes>
+  </BrowserRouter>,
   document.getElementById('root')
 );
 
