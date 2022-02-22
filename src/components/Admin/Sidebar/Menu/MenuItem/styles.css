@@ -1,0 +1,41 @@
+nav.admin-sidebar .menu li ul {
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+nav.admin-sidebar .menu li ul a {
+  display: block;
+  padding: 1rem;
+  transition: 0.2s;
+}
+
+nav.admin-sidebar .menu li ul a.active {
+  background-color: #2060be;
+}
+
+nav.admin-sidebar .menu li ul a:hover {
+  background-color: #2060be;
+}
+
+nav.admin-sidebar .menu li ul span {
+  margin: 0.5rem;
+}
+
+nav.admin-sidebar.sidebar-thin .menu li ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+nav.admin-sidebar.sidebar-thin .menu li ul a {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav.admin-sidebar.sidebar-thin .menu li ul span {
+  display: none;
+}

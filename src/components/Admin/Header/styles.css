@@ -1,0 +1,14 @@
+header.admin-header {
+  width: 100%;
+  height: 4rem;
+  background-color: #2060be;
+  position: sticky;
+  display: flex;
+  justify-content: space-between;
+}
+
+header.admin-header .header-partial {
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+}

@@ -1,6 +1,7 @@
 @font-face {
-  font-family: 'RedHat';
-  src: local('RedHat'), url(./assets/fonts/RedHatText-Regular.ttf) format('truetype');
+  font-family: "RedHat";
+  src: local("RedHat"),
+    url(./assets/fonts/RedHatText-Regular.ttf) format("truetype");
   /* other formats include: 'woff2', 'truetype, 'opentype',
                             'embedded-opentype', and 'svg' */
 }
@@ -16,5 +17,14 @@ iframe {
 }
 
 * {
-  font-family: 'RedHat', sans-serif;
+  font-family: "RedHat", sans-serif;
+}
+
+a {
+  cursor: pointer;
+}
+
+.app {
+  text-align: center;
+  min-height: 100vh;
 }

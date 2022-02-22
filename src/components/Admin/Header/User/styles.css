@@ -1,0 +1,14 @@
+header.admin-header .header-right a.user {
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  background-color: #cccccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+}
+
+header.admin-header .header-right a.user:hover {
+  opacity: 0.7;
+}

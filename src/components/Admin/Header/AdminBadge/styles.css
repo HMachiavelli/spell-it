@@ -1,0 +1,9 @@
+header.admin-header .header-left span {
+  border: solid 1px #ffffff;
+  padding: 0.2rem 1rem;
+  border-radius: 3px;
+  color: #ffffff;
+  font-size: 10px;
+  text-transform: uppercase;
+  font-weight: bold;
+}

@@ -1,0 +1,11 @@
+nav.admin-sidebar .menu-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+nav.admin-sidebar .menu-toggle a {
+  margin: 1rem;
+  transform: rotate(90deg);
+  font-weight: bold;
+}
