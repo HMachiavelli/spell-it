@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Admin/Dashboard";
+import Exercises from "./pages/Admin/Exercises";
 
 import reportWebVitals from "./reportWebVitals";
 
@@ -11,8 +12,9 @@ import "./index.css";
 ReactDOM.render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<Login />} />
-      <Route path="/admin" element={<Dashboard />} />
+      <Route index element={<Login />} />
+      <Route path="admin" element={<Dashboard />} />
+      <Route path="admin/exercicios" element={<Exercises />} />
     </Routes>
   </BrowserRouter>,
   document.getElementById("root")

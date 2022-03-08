@@ -1,15 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import "./styles.css";
 
 function MenuItem(props) {
   return (
-    <ul>
-      <a className={props.active ? "active" : ""}>
+    <li key={props.key}>
+      <Link to={`/admin${props.href}`} className={props.active ? "active" : ""}>
         {props.icon}
-        <span class="menu-title">{props.title}</span>
-      </a>
-    </ul>
+        <span className="menu-title">{props.title}</span>
+      </Link>
+    </li>
   );
 }
 

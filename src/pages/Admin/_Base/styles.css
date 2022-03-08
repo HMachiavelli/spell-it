@@ -18,3 +18,8 @@
   flex-flow: row wrap;
   padding: 0 1rem;
 }
+
+.admin-content .admin-content-title {
+  width: 100%;
+  text-align: left;
+}

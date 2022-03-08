@@ -7,7 +7,7 @@ import "./styles.css";
 function Menu(props) {
   return (
     <div className="menu">
-      <li>
+      <ul>
         {props.menuItems.map((item) => {
           return (
             <MenuItem
@@ -18,7 +18,7 @@ function Menu(props) {
             />
           );
         })}
-      </li>
+      </ul>
     </div>
   );
 }

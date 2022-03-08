@@ -1,41 +1,43 @@
-nav.admin-sidebar .menu li ul {
+nav.admin-sidebar .menu ul li {
   margin: 0;
   padding: 0;
   align-items: center;
   justify-content: center;
 }
 
-nav.admin-sidebar .menu li ul a {
+nav.admin-sidebar .menu ul li a {
   display: block;
   padding: 1rem;
   transition: 0.2s;
+  text-decoration: none;
+  color: #000000;
 }
 
-nav.admin-sidebar .menu li ul a.active {
+nav.admin-sidebar .menu ul li a.active {
   background-color: #2060be;
 }
 
-nav.admin-sidebar .menu li ul a:hover {
+nav.admin-sidebar .menu ul li a:hover {
   background-color: #2060be;
 }
 
-nav.admin-sidebar .menu li ul span {
+nav.admin-sidebar .menu ul li span {
   margin: 0.5rem;
 }
 
-nav.admin-sidebar.sidebar-thin .menu li ul {
+nav.admin-sidebar.sidebar-thin .menu ul li {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-nav.admin-sidebar.sidebar-thin .menu li ul a {
+nav.admin-sidebar.sidebar-thin .menu ul li a {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-nav.admin-sidebar.sidebar-thin .menu li ul span {
+nav.admin-sidebar.sidebar-thin .menu ul li span {
   display: none;
 }

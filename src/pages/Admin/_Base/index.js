@@ -21,24 +21,25 @@ const menuItems = [
   {
     title: "Jogos",
     icon: <FaGamepad />,
-    href: "#",
+    href: "/jogos",
     active: false,
   },
   {
     title: "Exercícios",
     icon: <FaPencilRuler />,
-    href: "#",
+    href: "/exercicios",
     active: false,
   },
   {
     title: "Níveis de dificuldade",
     icon: <FaMedal />,
-    href: "#",
+    href: "/niveis",
     active: false,
   },
 ];
 
 function AdminApp(props) {
+  console.log(props.children);
   const [menuToggle, setMenuToggle] = useState(false);
 
   const onToggleMenu = () => {
@@ -60,7 +61,13 @@ function AdminApp(props) {
       >
         <Header />
 
-        <div className="admin-content">{props.children}</div>
+        <div className="admin-content">
+          <div className="admin-content-title">
+            <h1>Bem-vindo, Administrador!</h1>
+          </div>
+
+          {props.children}
+        </div>
       </div>
     </div>
   );
