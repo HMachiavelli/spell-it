@@ -1,6 +1,5 @@
 import React from "react";
-import AdminApp from "../_Base";
-import TableList from "../../../components/Admin/TableList";
+import TableList from "../../../../components/Admin/TableList";
 
 const header = ["#", "Jogo", "Nível", "Enunciado", "Ações"];
 
@@ -31,14 +30,12 @@ function Exercises() {
   };
 
   return (
-    <AdminApp>
-      <TableList
-        title="Exercícios"
-        header={header}
-        list={exerciseList}
-        onFilter={onFilter}
-      />
-    </AdminApp>
+    <TableList
+      title="Exercícios"
+      header={header}
+      list={exerciseList}
+      onFilter={onFilter}
+    />
   );
 }
 

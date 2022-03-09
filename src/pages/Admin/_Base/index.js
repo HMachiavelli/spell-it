@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import Header from "../../../components/Admin/Header";
 import Sidebar from "../../../components/Admin/Sidebar";
 
@@ -11,40 +12,50 @@ import {
 
 import "./styles.css";
 
-const menuItems = [
-  {
-    title: "Dashboard",
-    icon: <FaRegChartBar />,
-    href: "#",
-    active: true,
-  },
-  {
-    title: "Jogos",
-    icon: <FaGamepad />,
-    href: "/jogos",
-    active: false,
-  },
-  {
-    title: "Exercícios",
-    icon: <FaPencilRuler />,
-    href: "/exercicios",
-    active: false,
-  },
-  {
-    title: "Níveis de dificuldade",
-    icon: <FaMedal />,
-    href: "/niveis",
-    active: false,
-  },
-];
-
 function AdminApp(props) {
-  console.log(props.children);
   const [menuToggle, setMenuToggle] = useState(false);
+  const [activeMenu, setActiveMenu] = useState("dashboard");
+
+  const location = useLocation();
+
+  useEffect(() => {
+    const { pathname } = location;
+
+    const splittedPathname = pathname.split("/");
+
+    setActiveMenu(splittedPathname[2] || "dashboard");
+  });
 
   const onToggleMenu = () => {
     setMenuToggle(!menuToggle);
   };
+
+  const menuItems = [
+    {
+      title: "Dashboard",
+      icon: <FaRegChartBar />,
+      href: "#",
+      active: activeMenu === "dashboard",
+    },
+    {
+      title: "Jogos",
+      icon: <FaGamepad />,
+      href: "/jogos",
+      active: activeMenu === "jogos",
+    },
+    {
+      title: "Exercícios",
+      icon: <FaPencilRuler />,
+      href: "/exercicios",
+      active: activeMenu === "exercicios",
+    },
+    {
+      title: "Níveis de dificuldade",
+      icon: <FaMedal />,
+      href: "/niveis",
+      active: activeMenu === "niveis",
+    },
+  ];
 
   return (
     <div className="app admin">

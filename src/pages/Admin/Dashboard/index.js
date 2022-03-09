@@ -1,12 +1,7 @@
 import React from "react";
-import AdminApp from "../_Base";
 
 function Dashboard() {
-  return (
-    <AdminApp>
-      <h1>Dashboard!</h1>
-    </AdminApp>
-  );
+  return <h1>Dashboard!</h1>;
 }
 
 export default Dashboard;
