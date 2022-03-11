@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Button from "../../Button";
 import Table from "../../Table";
-
-import { FaSpinner } from "react-icons/fa";
+import Paginator from "./Paginator";
+import Loading from "./Loading";
 
 import "./styles.css";
 
@@ -30,24 +30,9 @@ function TableList(props) {
     }, 3000);
   };
 
-  const buildPages = (pages) => {
-    let buttons = [];
-    for (let i = 1; i <= pages; i++) {
-      buttons.push(
-        <button
-          onClick={async () => {
-            setPage(i);
-            await fetch();
-          }}
-          className={page == i ? "active" : ""}
-          type="button"
-        >
-          {i}
-        </button>
-      );
-    }
-
-    return buttons;
+  const onChangePage = async (page) => {
+    setPage(page);
+    await fetch();
   };
 
   return (
@@ -90,41 +75,9 @@ function TableList(props) {
 
       <Table header={props.header} items={props.list} cellPadding="8px" />
 
-      <div className="paginator">
-        <button
-          onClick={async () => {
-            if (page > 1) {
-              setPage(page - 1);
-              await fetch();
-            }
-          }}
-          type="button"
-        >
-          &lt;
-        </button>
+      <Paginator onChangePage={onChangePage} pages={pages} page={page} />
 
-        {buildPages(pages).map((button) => {
-          return button;
-        })}
-
-        <button
-          onClick={async () => {
-            if (page < pages) {
-              setPage(page + 1);
-              await fetch();
-            }
-          }}
-          type="button"
-        >
-          &gt;
-        </button>
-      </div>
-
-      {loading && (
-        <div className="table-loading">
-          <FaSpinner className="spin" size="2rem" />
-        </div>
-      )}
+      {loading && <Loading />}
     </div>
   );
 }
