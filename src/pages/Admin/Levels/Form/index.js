@@ -1,7 +1,22 @@
-import React from "react";
-import "./styles.css";
+import React, { useState } from "react";
+
+import { NotificationManager } from "react-notifications";
+import FormActions from "../../../../components/Admin/FormActions";
 
 function LevelForm() {
+  const [loading, setLoading] = useState(false);
+
+  const send = (evt) => {
+    evt.preventDefault();
+
+    setLoading(true);
+
+    setTimeout(() => {
+      NotificationManager.success("O registro foi salvo!", "Sucesso!");
+      setLoading(false);
+    }, 3000);
+  };
+
   return (
     <>
       <div className="form-title">
@@ -9,8 +24,11 @@ function LevelForm() {
       </div>
 
       <div className="form-wrapper">
-        <form>
+        <form onSubmit={send}>
+          <label>Descrição:</label>
           <input></input>
+
+          <FormActions loading={loading} />
         </form>
       </div>
     </>

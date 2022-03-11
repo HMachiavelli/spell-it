@@ -16,6 +16,34 @@ const levelList = [
     id: 3,
     game: "Difícil",
   },
+  {
+    id: 3,
+    game: "Difícil",
+  },
+  {
+    id: 3,
+    game: "Difícil",
+  },
+  {
+    id: 3,
+    game: "Difícil",
+  },
+  {
+    id: 3,
+    game: "Difícil",
+  },
+  {
+    id: 3,
+    game: "Difícil",
+  },
+  {
+    id: 3,
+    game: "Difícil",
+  },
+  {
+    id: 3,
+    game: "Difícil",
+  },
 ];
 
 function LevelList() {
@@ -28,6 +56,7 @@ function LevelList() {
       title="Níveis de dificuldade"
       header={header}
       list={levelList}
+      total={50}
       onFilter={onFilter}
     />
   );

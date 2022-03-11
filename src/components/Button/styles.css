@@ -32,6 +32,10 @@
   background-color: #73ad69;
 }
 
+.btn-primary:hover {
+  background-color: #44753c;
+}
+
 .btn-secondary {
   background-color: #87b3f5;
   border: solid 1px #ffffff;
@@ -42,4 +46,19 @@
   background: #ffffff;
   color: #87b3f5;
   border: solid 1px #87b3f5;
+}
+
+.btn:disabled,
+.btn[disabled] {
+  cursor: not-allowed;
+}
+
+.btn-primary:disabled,
+.btn-primary[disabled] {
+  background-color: #bae2b3;
+}
+
+.btn-secondary:disabled,
+.btn-secondary[disabled] {
+  background-color: #b7d2fa;
 }

@@ -22,6 +22,48 @@ const exerciseList = [
     level: "Nivel",
     description: "Enunciado",
   },
+  {
+    id: 4,
+    game: "Jogo",
+    level: "Nivel",
+    description: "Enunciado",
+  },
+  {
+    id: 4,
+    game: "Jogo",
+    level: "Nivel",
+    description: "Enunciado",
+  },
+  {
+    id: 4,
+    game: "Jogo",
+    level: "Nivel",
+    description: "Enunciado",
+  },
+  {
+    id: 4,
+    game: "Jogo",
+    level: "Nivel",
+    description: "Enunciado",
+  },
+  {
+    id: 4,
+    game: "Jogo",
+    level: "Nivel",
+    description: "Enunciado",
+  },
+  {
+    id: 4,
+    game: "Jogo",
+    level: "Nivel",
+    description: "Enunciado",
+  },
+  {
+    id: 4,
+    game: "Jogo",
+    level: "Nivel",
+    description: "Enunciado",
+  },
 ];
 
 function Exercises() {
@@ -32,6 +74,7 @@ function Exercises() {
   return (
     <TableList
       title="Exercícios"
+      total="50"
       header={header}
       list={exerciseList}
       onFilter={onFilter}
