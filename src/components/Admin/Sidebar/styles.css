@@ -1,6 +1,6 @@
 nav.admin-sidebar {
   height: 100vh;
-  width: 20vw;
+  width: 20%;
   background-color: #87b3f5;
   position: fixed;
   margin: 0;
@@ -9,7 +9,7 @@ nav.admin-sidebar {
 }
 
 nav.admin-sidebar.sidebar-thin {
-  width: 5vw;
+  width: 5%;
 }
 
 nav.admin-sidebar .top-sidebar {

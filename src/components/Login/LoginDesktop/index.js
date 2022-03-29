@@ -2,7 +2,7 @@ import React from "react";
 import Button from "../../Button";
 import "./styles.css";
 
-function LoginDesktop() {
+function LoginDesktop(props) {
   return (
     <div className="login-container">
       <div className="login-left">
@@ -20,12 +20,17 @@ function LoginDesktop() {
           <h1>Login</h1>
           <hr />
 
-          <form className="login-form">
-            <input placeholder="Usuário" />
-            <input placeholder="Senha" />
+          <form className="login-form" onSubmit={props.onSubmit} method="POST">
+            <input placeholder="Usuário" name="user" type="text" />
+            <input placeholder="Senha" name="password" type="password" />
 
             <div className="login-action">
-              <Button type="submit" text="Acessar" theme="secondary" />
+              <Button
+                type="submit"
+                text={props.loading ? "Aguarde" : "Acessar"}
+                theme="secondary"
+                disabled={props.loading}
+              />
               <a href="#">Recuperar senha</a>
             </div>
           </form>

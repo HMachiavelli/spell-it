@@ -1,0 +1,92 @@
+.gameWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 35rem;
+}
+
+.gameBox {
+  background-color: #b0cdfa;
+  border-radius: 5px;
+  width: 100%;
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.gameBox .gameTitle {
+  background-color: #fff;
+  color: #2060be;
+  padding: 1rem 2.5rem;
+  border-radius: 5px;
+  margin-top: -2rem;
+  text-align: center;
+}
+
+.gameBox .gameTitle h2 {
+  margin: 0;
+}
+
+.gameActions {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+
+.gameList {
+  margin: 2rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.gameList .box {
+  margin: 1rem;
+  padding: 1rem;
+  width: 10rem;
+  background-color: #fff;
+  border-radius: 8px;
+  color: #87b3f5;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.gameList .box:hover,
+.gameList .box.active {
+  background-color: #2060be;
+  color: #fff;
+}
+
+.gameActions .levelList {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.gameActions .levelList .box {
+  width: 5rem;
+  padding: 1rem;
+  background-color: #fff;
+  color: #87b3f5;
+  text-align: center;
+  margin-right: 1rem;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.gameActions .levelList .box.active,
+.gameActions .levelList .box:hover {
+  background-color: #b0cdfa;
+  color: #fff;
+}

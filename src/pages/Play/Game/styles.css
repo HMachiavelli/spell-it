@@ -1,0 +1,57 @@
+.gameWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 40rem;
+}
+
+.gameBox {
+  background-color: #b0cdfa;
+  border-radius: 5px;
+  width: 100%;
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.gameBox .gameTitle {
+  background-color: #fff;
+  color: #2060be;
+  padding: 1rem 2.5rem;
+  border-radius: 5px;
+  margin-top: -2rem;
+  text-align: center;
+}
+
+.gameBox .gameTitle h2 {
+  margin: 0;
+}
+
+.gameActions {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+
+.gameActions span {
+  font-size: 1.7rem;
+  font-weight: bold;
+  margin: 0 1rem;
+}
+
+.exercise {
+  text-align: center;
+  color: #2060be;
+  font-size: 1.6rem;
+  margin: 2rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}

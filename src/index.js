@@ -1,12 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
+
 import Login from "./pages/Login";
+
 import Dashboard from "./pages/Admin/Dashboard";
 import ExerciseList from "./pages/Admin/Exercises/List";
 import LevelList from "./pages/Admin/Levels/List";
 import LevelForm from "./pages/Admin/Levels/Form";
 import Admin from "./pages/Admin";
+
+import Play from "./pages/Play";
+import GameList from "./pages/Play/GameList";
+import Game from "./pages/Play/Game";
 
 import reportWebVitals from "./reportWebVitals";
 
@@ -27,6 +33,10 @@ ReactDOM.render(
           <Route path=":levelId" element={<LevelForm />} />
         </Route>
         <Route path="jogos" element={<Outlet />}></Route>
+      </Route>
+      <Route path="play" element={<Play />}>
+        <Route path="" index element={<GameList />} />
+        <Route path="game/:gameId" index element={<Game />} />
       </Route>
     </Routes>
   </BrowserRouter>,

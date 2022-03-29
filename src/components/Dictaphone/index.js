@@ -1,22 +1,25 @@
-import React, { useState } from 'react';
-import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
-import axios from 'axios';
+import React, { useState } from "react";
+import SpeechRecognition, {
+  useSpeechRecognition,
+} from "react-speech-recognition";
+import { FaMicrophone } from "react-icons/fa";
+import axios from "axios";
 
-const Dictaphone = () => {
-  const [message, setMessage] = useState('')
+import "./styles.css";
 
-  const apiCompare = async (received) => {
-    const res = await axios.get('http://localhost:3000?wanted=everywhere&received=' + received);
-
-    if(res && res.data) {
-      setMessage(`Your speaking is ${res.data} correct`)
-    }
-  }
+function Dictaphone() {
+  const [message, setMessage] = useState("");
 
   const commands = [
     {
-      command: '*',
-      callback: async (text) => { await apiCompare(text) }
+      command: "*",
+      callback: (text) => {
+        if (text) {
+          console.log("Você disse: " + text);
+        }
+
+        return;
+      },
     },
   ];
 
@@ -24,8 +27,16 @@ const Dictaphone = () => {
     transcript,
     listening,
     resetTranscript,
-    browserSupportsSpeechRecognition
+    browserSupportsSpeechRecognition,
   } = useSpeechRecognition({ commands });
+
+  const micClick = () => {
+    if (listening) {
+      SpeechRecognition.stopListening();
+    } else {
+      SpeechRecognition.startListening();
+    }
+  };
 
   if (!browserSupportsSpeechRecognition) {
     return <span>Browser doesn't support speech recognition.</span>;
@@ -33,14 +44,11 @@ const Dictaphone = () => {
 
   return (
     <div>
-      <p>Microphone: {listening ? 'on' : 'off'}</p>
-      <button onClick={SpeechRecognition.startListening}>Start</button>
-      <button onClick={SpeechRecognition.stopListening}>Stop</button>
-      <button onClick={resetTranscript}>Reset</button>
-      <p>We want: everywhere</p>
-      <p>You said: {transcript}</p>
-      <p>{message}</p>
+      <div onClick={micClick} className="microphone">
+        <FaMicrophone color={listening ? "green" : "red"} size="3rem" />
+      </div>
     </div>
   );
-};
+}
+
 export default Dictaphone;

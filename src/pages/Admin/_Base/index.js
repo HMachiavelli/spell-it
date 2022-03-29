@@ -39,24 +39,28 @@ function AdminApp(props) {
       icon: <FaRegChartBar />,
       href: "#",
       active: activeMenu === "dashboard",
+      blocked: false,
     },
     {
       title: "Jogos",
       icon: <FaGamepad />,
       href: "/jogos",
       active: activeMenu === "jogos",
+      blocked: true,
     },
     {
       title: "Exercícios",
       icon: <FaPencilRuler />,
       href: "/exercicios",
       active: activeMenu === "exercicios",
+      blocked: true,
     },
     {
       title: "Níveis de dificuldade",
       icon: <FaMedal />,
       href: "/niveis",
       active: activeMenu === "niveis",
+      blocked: false,
     },
   ];
 

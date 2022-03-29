@@ -15,6 +15,7 @@ function Menu(props) {
               title={item.title}
               href={item.href}
               icon={item.icon}
+              blocked={item.blocked}
             />
           );
         })}

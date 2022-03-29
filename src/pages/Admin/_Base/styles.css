@@ -3,14 +3,14 @@
 }
 
 .admin-content-wrapper {
-  width: 80vw;
-  height: 100vh;
+  width: 80%;
+  min-height: 100vh;
   float: right;
   transition: 0.1s;
 }
 
 .admin-content-wrapper.wrapper-expanded {
-  width: 95vw;
+  width: 95%;
 }
 
 .admin-content {
