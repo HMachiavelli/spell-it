@@ -1,7 +1,30 @@
+@media screen and (max-width: 680px) {
+  .gameWrapper {
+    width: 100%;
+    margin-top: 3rem;
+  }
+
+  .gameBox .mobileTitle {
+    display: block;
+    margin: 0;
+    color: #2060be;
+    font-size: 1.8rem;
+  }
+
+  .gameBox .exercise {
+    margin: 0;
+  }
+
+  .gameWrapper .gameActions p.progress {
+    margin-bottom: 1.5rem;
+  }
+}
+
 .gameWrapper {
   display: flex;
   flex-direction: column;
   width: 40rem;
+  margin-top: 2rem;
 }
 
 .gameBox {
@@ -24,6 +47,10 @@
   text-align: center;
 }
 
+.mobileTitle {
+  display: none;
+}
+
 .gameBox .gameTitle h2 {
   margin: 0;
 }
@@ -37,7 +64,7 @@
   padding: 1rem 0;
 }
 
-.gameActions span {
+.gameActions p.progress {
   font-size: 1.7rem;
   font-weight: bold;
   margin: 0 1rem;

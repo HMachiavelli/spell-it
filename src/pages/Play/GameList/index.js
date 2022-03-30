@@ -24,8 +24,9 @@ function GameList(props) {
     <div className="gameWrapper">
       <div className="gameBox">
         <div className="gameTitle">
-          <h2>Selecione um jogo</h2>
+          <h2 className="title">Selecione um jogo</h2>
         </div>
+        <h2 className="mobileTitle">Selecione um jogo:</h2>
 
         <div className="gameList">
           <div
@@ -46,6 +47,7 @@ function GameList(props) {
         </div>
       </div>
       <div className="gameActions">
+        <span>Dificuldade:</span>
         <div className="levelList">
           <div
             onClick={() => setLevel(1)}

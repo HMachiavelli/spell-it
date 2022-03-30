@@ -1,7 +1,55 @@
+@media screen and (max-width: 680px) {
+  .gameWrapper {
+    width: 100%;
+    margin-top: 3rem;
+  }
+
+  .gameBox {
+    width: 100%;
+  }
+
+  .gameBox .mobileTitle {
+    display: block;
+    margin: 0;
+    color: #2060be;
+    font-size: 1.8rem;
+  }
+
+  .gameTitle {
+    display: none;
+  }
+
+  .gameWrapper .gameList {
+    margin-bottom: 0;
+  }
+
+  .gameWrapper .gameActions {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .gameWrapper .gameActions span {
+    display: block;
+    text-align: center;
+    color: #2060be;
+  }
+
+  .gameWrapper .gameActions .levelList {
+    margin: 1.5rem 0;
+    justify-content: center;
+  }
+
+  .gameWrapper .gameActions button {
+    padding: 1.3rem;
+  }
+}
+
 .gameWrapper {
   display: flex;
   flex-direction: column;
   width: 35rem;
+  margin-top: 2rem;
 }
 
 .gameBox {
@@ -26,6 +74,10 @@
 
 .gameBox .gameTitle h2 {
   margin: 0;
+}
+
+.mobileTitle {
+  display: none;
 }
 
 .gameActions {
@@ -65,6 +117,10 @@
   color: #fff;
 }
 
+.gameActions span {
+  display: none;
+}
+
 .gameActions .levelList {
   display: flex;
   flex-direction: row;
@@ -87,6 +143,6 @@
 
 .gameActions .levelList .box.active,
 .gameActions .levelList .box:hover {
-  background-color: #b0cdfa;
+  background-color: #87b3f5;
   color: #fff;
 }

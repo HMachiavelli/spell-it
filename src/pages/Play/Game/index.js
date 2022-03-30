@@ -14,6 +14,7 @@ function Game(props) {
         <div className="gameTitle">
           <h2>Exercício 1</h2>
         </div>
+        <h2 className="mobileTitle">Exercício 1</h2>
 
         <div className="exercise">
           <h2>Fale a seguinte frase: "The book is on the table"</h2>
@@ -22,7 +23,7 @@ function Game(props) {
         </div>
       </div>
       <div className="gameActions">
-        <span>1/10</span>
+        <p className="progress">1/10</p>
 
         <Button
           onClick={() => alert("Ser foi!")}
