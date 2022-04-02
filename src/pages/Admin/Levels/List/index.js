@@ -1,54 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
+import { NotificationManager } from "react-notifications";
+
+import { httpClient } from "../../../../utils/httpClient";
 import TableList from "../../../../components/Admin/TableList";
 
 const header = ["#", "Descrição", "Ações"];
 
-const levelList = [
-  {
-    id: 1,
-    description: "Fácil",
-  },
-  {
-    id: 2,
-    description: "Médio",
-  },
-  {
-    id: 3,
-    game: "Difícil",
-  },
-  {
-    id: 3,
-    game: "Difícil",
-  },
-  {
-    id: 3,
-    game: "Difícil",
-  },
-  {
-    id: 3,
-    game: "Difícil",
-  },
-  {
-    id: 3,
-    game: "Difícil",
-  },
-  {
-    id: 3,
-    game: "Difícil",
-  },
-  {
-    id: 3,
-    game: "Difícil",
-  },
-  {
-    id: 3,
-    game: "Difícil",
-  },
-];
-
 function LevelList() {
-  const onFilter = (search, pageSize) => {
-    console.log(search, pageSize);
+  const [levelList, setLevelList] = useState([]);
+  const [total, setTotal] = useState(0);
+
+  const onFilter = async (search, pageSize, page) => {
+    try {
+      const response = await httpClient.get("/levels", {
+        params: {
+          search,
+          page,
+          page_size: pageSize,
+        },
+      });
+
+      setTotal(response.data.total);
+      setLevelList(mapApiResponse(response.data.list));
+    } catch (err) {
+      console.log(err);
+      NotificationManager.warning(err, "Atenção!");
+    }
+  };
+
+  const mapApiResponse = (apiList) => {
+    return apiList.map((item) => {
+      return {
+        id: item.id,
+        title: item.title,
+      };
+    });
   };
 
   return (
@@ -56,8 +42,9 @@ function LevelList() {
       title="Níveis de dificuldade"
       header={header}
       list={levelList}
-      total={50}
+      total={total}
       onFilter={onFilter}
+      addLink="/admin/niveis/add"
     />
   );
 }

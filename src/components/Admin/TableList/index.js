@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 import Button from "../../Button";
 import Table from "../../Table";
 import Paginator from "./Paginator";
@@ -7,6 +9,8 @@ import Loading from "./Loading";
 import "./styles.css";
 
 function TableList(props) {
+  const go = useNavigate();
+
   const [filter, setFilter] = useState("");
   const [pageSize, setPageSize] = useState("10");
   const [page, setPage] = useState(1);
@@ -27,7 +31,7 @@ function TableList(props) {
     await props.onFilter(filter, pageSize, page);
     setTimeout(() => {
       setLoading(false);
-    }, 3000);
+    }, 500);
   };
 
   const onChangePage = async (page) => {
@@ -39,7 +43,11 @@ function TableList(props) {
     <div className="table-list">
       <div className="table-list-title">
         {props.title && <h2>{props.title}</h2>}
-        <Button theme="primary" text="+ Criar jogo" />
+        <Button
+          theme="primary"
+          text="+ Criar jogo"
+          onClick={() => go(props.addLink)}
+        />
       </div>
 
       <form

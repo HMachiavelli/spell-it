@@ -30,6 +30,7 @@ ReactDOM.render(
         </Route>
         <Route path="niveis" element={<Outlet />}>
           <Route path="" index element={<LevelList />} />
+          <Route path="add" index element={<LevelForm />} />
           <Route path=":levelId" element={<LevelForm />} />
         </Route>
         <Route path="jogos" element={<Outlet />}></Route>

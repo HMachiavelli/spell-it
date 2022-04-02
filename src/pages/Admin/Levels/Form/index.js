@@ -1,32 +1,69 @@
-import React, { useState } from "react";
-
+import React, { useEffect, useState } from "react";
 import { NotificationManager } from "react-notifications";
+import { useNavigate, useParams } from "react-router-dom";
+
+import { httpClient } from "../../../../utils/httpClient";
 import FormActions from "../../../../components/Admin/FormActions";
 
 function LevelForm() {
-  const [loading, setLoading] = useState(false);
+  const go = useNavigate();
+  const { levelId } = useParams();
 
-  const send = (evt) => {
+  const [loading, setLoading] = useState(false);
+  const [level, setLevel] = useState({});
+
+  useEffect(async () => {
+    if (!levelId) {
+      return;
+    }
+
+    try {
+      const response = await httpClient.get(`/levels/${levelId}`);
+      setLevel(response.data);
+    } catch (err) {
+      console.log(err);
+      // NotificationManager.warning(err, "Atenção!");
+    }
+  });
+
+  const send = async (evt) => {
     evt.preventDefault();
 
     setLoading(true);
 
-    setTimeout(() => {
+    try {
+      if (levelId) {
+        const response = await httpClient.patch("/levels", {
+          title: evt.target.title.value,
+          id: levelId,
+        });
+      } else {
+        const response = await httpClient.post("/levels", {
+          title: evt.target.title.value,
+        });
+      }
+
       NotificationManager.success("O registro foi salvo!", "Sucesso!");
       setLoading(false);
-    }, 3000);
+      setTimeout(() => {
+        go("/admin/niveis");
+      }, 500);
+    } catch (err) {
+      NotificationManager.warning(err, "Atenção!");
+      setLoading(false);
+    }
   };
 
   return (
     <>
       <div className="form-title">
-        <h2>Níveis de dificuldade &gt; Criar nível</h2>
+        <h2>Níveis de dificuldade &gt; {levelId ? "Editar" : "Criar"} nível</h2>
       </div>
 
       <div className="form-wrapper">
         <form onSubmit={send}>
           <label>Descrição:</label>
-          <input></input>
+          <input name="title" required value={level.title}></input>
 
           <FormActions loading={loading} />
         </form>
