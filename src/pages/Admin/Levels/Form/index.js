@@ -10,7 +10,7 @@ function LevelForm() {
   const { levelId } = useParams();
 
   const [loading, setLoading] = useState(false);
-  const [level, setLevel] = useState({});
+  const [title, setTitle] = useState("");
 
   useEffect(async () => {
     if (!levelId) {
@@ -19,12 +19,14 @@ function LevelForm() {
 
     try {
       const response = await httpClient.get(`/levels/${levelId}`);
-      setLevel(response.data);
+      const { title } = response.data;
+
+      setTitle(title);
     } catch (err) {
       console.log(err);
       // NotificationManager.warning(err, "Atenção!");
     }
-  });
+  }, []);
 
   const send = async (evt) => {
     evt.preventDefault();
@@ -63,7 +65,15 @@ function LevelForm() {
       <div className="form-wrapper">
         <form onSubmit={send}>
           <label>Descrição:</label>
-          <input name="title" required value={level.title}></input>
+          <input
+            name="title"
+            required
+            value={title}
+            onChange={(evt) => {
+              console.log(evt.target.value);
+              setTitle(evt.target.value);
+            }}
+          ></input>
 
           <FormActions loading={loading} />
         </form>

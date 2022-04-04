@@ -17,13 +17,21 @@ function Table(props) {
           return (
             <tr>
               {Object.values(item).map((property) => {
-                return <td>{property}</td>;
+                if (typeof property != "function") {
+                  return <td>{property}</td>;
+                }
               })}
               <td>
                 <Link to={`${item.id}`}>
                   <FaRegEdit />
                 </Link>
-                <Link to="">
+                <Link
+                  onClick={async (evt) => {
+                    evt.preventDefault();
+                    await item.onDelete(item.id);
+                  }}
+                  to=""
+                >
                   <FaRegTrashAlt />
                 </Link>
               </td>
