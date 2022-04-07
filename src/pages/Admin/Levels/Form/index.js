@@ -70,7 +70,6 @@ function LevelForm() {
             required
             value={title}
             onChange={(evt) => {
-              console.log(evt.target.value);
               setTitle(evt.target.value);
             }}
           ></input>

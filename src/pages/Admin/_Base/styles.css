@@ -158,11 +158,30 @@
   align-items: center;
   justify-content: flex-start;
   font-weight: 600;
+  margin-top: 1.2rem;
 }
 
 .form-wrapper input {
   width: 99%;
   height: 1.5rem;
+  padding: 0.5rem 0 0.5rem 0.6rem;
+  margin: 0.7rem 0;
+  border: none;
+  background-color: #efefef;
+  border-radius: 5px;
+}
+
+.form-wrapper select {
+  width: 99%;
+  padding: 0.5rem 0 0.5rem 0.6rem;
+  margin: 0.7rem 0;
+  border: none;
+  background-color: #efefef;
+  border-radius: 5px;
+}
+
+.form-wrapper textarea {
+  width: 99%;
   padding: 0.5rem 0 0.5rem 0.6rem;
   margin: 0.7rem 0;
   border: none;

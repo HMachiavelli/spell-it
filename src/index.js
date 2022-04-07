@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 
 import Dashboard from "./pages/Admin/Dashboard";
 import ExerciseList from "./pages/Admin/Exercises/List";
+import ExerciseForm from "./pages/Admin/Exercises/Form";
 import LevelList from "./pages/Admin/Levels/List";
 import LevelForm from "./pages/Admin/Levels/Form";
 import Admin from "./pages/Admin";
@@ -27,13 +28,14 @@ ReactDOM.render(
         <Route path="" index element={<Dashboard />} />
         <Route path="exercicios" element={<Outlet />}>
           <Route path="" index element={<ExerciseList />} />
+          <Route path="add" index element={<ExerciseForm />} />
+          <Route path=":exerciseId" element={<ExerciseForm />} />
         </Route>
         <Route path="niveis" element={<Outlet />}>
           <Route path="" index element={<LevelList />} />
           <Route path="add" index element={<LevelForm />} />
           <Route path=":levelId" element={<LevelForm />} />
         </Route>
-        <Route path="jogos" element={<Outlet />}></Route>
       </Route>
       <Route path="play" element={<Play />}>
         <Route path="" index element={<GameList />} />

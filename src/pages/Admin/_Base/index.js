@@ -42,18 +42,11 @@ function AdminApp(props) {
       blocked: false,
     },
     {
-      title: "Jogos",
-      icon: <FaGamepad />,
-      href: "/jogos",
-      active: activeMenu === "jogos",
-      blocked: true,
-    },
-    {
       title: "Exercícios",
       icon: <FaPencilRuler />,
       href: "/exercicios",
       active: activeMenu === "exercicios",
-      blocked: true,
+      blocked: false,
     },
     {
       title: "Níveis de dificuldade",
