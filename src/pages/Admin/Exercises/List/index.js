@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 import { httpClient } from "../../../../utils/httpClient";
 import TableList from "../../../../components/Admin/TableList";
 
-const header = ["#", "Descrição", "Ações"];
+const header = ["#", "Jogo", "Nível", "Enunciado", "Reposta esperada"];
 
 function LevelList() {
   const [levelList, setLevelList] = useState([]);
