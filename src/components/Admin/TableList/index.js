@@ -45,7 +45,7 @@ function TableList(props) {
         {props.title && <h2>{props.title}</h2>}
         <Button
           theme="primary"
-          text="+ Criar jogo"
+          text="+ Criar"
           onClick={() => go(props.addLink)}
         />
       </div>
