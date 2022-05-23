@@ -24,7 +24,7 @@ function TableList(props) {
     };
 
     fetchData();
-  }, []);
+  }, [page, pageSize]);
 
   const fetch = async () => {
     setLoading(true);
@@ -34,9 +34,8 @@ function TableList(props) {
     }, 500);
   };
 
-  const onChangePage = async (page) => {
-    setPage(page);
-    await fetch();
+  const onChangePage = async (pageNumber) => {
+    setPage(pageNumber);
   };
 
   return (

@@ -12,6 +12,7 @@ function LevelList() {
   const [total, setTotal] = useState(0);
 
   const onFilter = async (search, pageSize, page) => {
+    console.log(pageSize, page);
     try {
       const response = await httpClient.get("/exercises", {
         params: {
@@ -42,16 +43,16 @@ function LevelList() {
       reverseButtons: true,
       allowOutsideClick: () => !Swal.isLoading(),
       preConfirm: async () => {
-        // const response = await httpClient.delete(`/levels/${id}`);
+        const response = await httpClient.delete(`/exercises/${id}`);
 
-        // if (response.status === 200) {
-        //   return response;
-        // } else {
-        NotificationManager.warning(
-          "Não foi possível excluir este registro agora!",
-          "Atenção!"
-        );
-        // }
+        if (response.status === 200) {
+          return response;
+        } else {
+          NotificationManager.warning(
+            "Não foi possível excluir este registro agora!",
+            "Atenção!"
+          );
+        }
       },
     }).then(async (result) => {
       if (!result.isConfirmed) {
@@ -67,7 +68,10 @@ function LevelList() {
     return apiList.map((item) => {
       return {
         id: item.id,
-        title: item.title,
+        game: item.game.name,
+        level: item.level.title,
+        question: item.question,
+        answer: item.answer,
         onDelete,
       };
     });

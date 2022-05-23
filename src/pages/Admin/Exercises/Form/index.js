@@ -10,26 +10,35 @@ function LevelForm() {
   const { exerciseId } = useParams();
 
   const [loading, setLoading] = useState(false);
-  const [game, setGame] = useState(null);
-  const [level, setLevel] = useState(null);
+  const [game, setGame] = useState(1);
+  const [level, setLevel] = useState(1);
+  const [answerType, setAnswerType] = useState(1);
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
+  const [levelList, setLevelList] = useState(["Aguarde..."]);
 
-  // useEffect(async () => {
-  //   if (!exerciseId) {
-  //     return;
-  //   }
+  useEffect(async () => {
+    const levelsResponse = await httpClient.get(`/levels`);
+    setLevelList(levelsResponse.data.list);
 
-  //   try {
-  //     // const response = await httpClient.get(`/levels/${exerciseId}`);
-  //     const { title } = response.data;
+    if (!exerciseId) {
+      return;
+    }
 
-  //     setTitle(title);
-  //   } catch (err) {
-  //     console.log(err);
-  //     // NotificationManager.warning(err, "Atenção!");
-  //   }
-  // }, []);
+    try {
+      const response = await httpClient.get(`/exercises/${exerciseId}`);
+      const { question, answer, game, level, answer_type } = response.data;
+
+      setQuestion(question);
+      setAnswer(answer);
+      setGame(game.id);
+      setLevel(level.id);
+      setAnswerType(answer_type.id);
+    } catch (err) {
+      console.log(err);
+      // NotificationManager.warning(err, "Atenção!");
+    }
+  }, []);
 
   const send = async (evt) => {
     evt.preventDefault();
@@ -37,16 +46,28 @@ function LevelForm() {
     setLoading(true);
 
     try {
-      // if (levelId) {
-      //   const response = await httpClient.patch("/levels", {
-      //     title: evt.target.title.value,
-      //     id: levelId,
-      //   });
-      // } else {
-      //   const response = await httpClient.post("/levels", {
-      //     title: evt.target.title.value,
-      //   });
-      // }
+      if (exerciseId) {
+        const response = await httpClient.patch("/exercises", {
+          question,
+          answer,
+          type: "speech",
+          answer_type_id: answerType,
+          game_id: game,
+          level_id: level,
+          active: true,
+          id: exerciseId,
+        });
+      } else {
+        const response = await httpClient.post("/exercises", {
+          question,
+          answer,
+          type: "speech",
+          answer_type_id: answerType,
+          game_id: game,
+          level_id: level,
+          active: true,
+        });
+      }
 
       NotificationManager.success("O registro foi salvo!", "Sucesso!");
       setLoading(false);
@@ -77,9 +98,18 @@ function LevelForm() {
             }}
           >
             <option value="1">Speaking</option>
-            <option value="2">Listening</option>
-            <option value="3">Writing</option>
-            <option value="4">Reading</option>
+          </select>
+
+          <label>Tipo de resposta:</label>
+          <select
+            name="answerTypeId"
+            required
+            value={answerType}
+            onChange={(evt) => {
+              setAnswerType(evt.target.value);
+            }}
+          >
+            <option value="1">Fala</option>
           </select>
 
           <label>Nível de dificuldade:</label>
@@ -91,9 +121,13 @@ function LevelForm() {
               setLevel(evt.target.value);
             }}
           >
-            <option value="1">Iniciante</option>
-            <option value="2">Médio</option>
-            <option value="3">Avançado</option>
+            {levelList.map((level) => {
+              return (
+                <option key={level.id} value={level.id}>
+                  {level.title}
+                </option>
+              );
+            })}
           </select>
 
           <label>Enunciado:</label>
@@ -103,9 +137,8 @@ function LevelForm() {
             }}
             rows="3"
             name="question"
-          >
-            {question}
-          </textarea>
+            value={question}
+          />
 
           <label>Resposta esperada:</label>
           <textarea
@@ -114,10 +147,8 @@ function LevelForm() {
             }}
             rows="3"
             name="answer"
-          >
-            {answer}
-          </textarea>
-
+            value={answer}
+          />
           <FormActions loading={loading} />
         </form>
       </div>
