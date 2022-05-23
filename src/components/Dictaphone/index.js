@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
-import { FaMicrophone } from "react-icons/fa";
-import axios from "axios";
+import { FaCheckCircle, FaMicrophone } from "react-icons/fa";
 
 import "./styles.css";
 
-function Dictaphone() {
+function Dictaphone(props) {
   const [message, setMessage] = useState("");
 
   const commands = [
@@ -16,6 +15,7 @@ function Dictaphone() {
       callback: (text) => {
         if (text) {
           console.log("Você disse: " + text);
+          props.onSpeak(text);
         }
 
         return;
@@ -44,9 +44,15 @@ function Dictaphone() {
 
   return (
     <div>
-      <div onClick={micClick} className="microphone">
-        <FaMicrophone color={listening ? "green" : "red"} size="3rem" />
-      </div>
+      {props.done ? (
+        <div className="microphone">
+          <FaCheckCircle color="green" size="3rem" />
+        </div>
+      ) : (
+        <div onClick={micClick} className="microphone">
+          <FaMicrophone color={listening ? "green" : "red"} size="3rem" />
+        </div>
+      )}
     </div>
   );
 }

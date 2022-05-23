@@ -12,3 +12,14 @@ header.admin-header .header-partial {
   align-items: center;
   padding: 0 1rem;
 }
+
+header.admin-header .header-left .go-play {
+  margin-left: 0.8rem;
+  font-weight: 600;
+  color: #222222;
+  text-decoration: none;
+}
+
+header.admin-header .header-left .go-play:hover {
+  text-decoration: underline;
+}

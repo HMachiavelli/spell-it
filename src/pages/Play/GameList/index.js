@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { httpClient } from "../../../utils/httpClient";
 
 import Button from "../../../components/Button";
 
@@ -10,14 +11,34 @@ function GameList(props) {
 
   const [level, setLevel] = useState(1);
   const [game, setGame] = useState(1);
+  const [levelList, setLevelList] = useState([]);
 
-  const goToGame = () => {
+  useEffect(async () => {
+    try {
+      const response = await httpClient.get("/levels");
+
+      setLevelList(response.data.list);
+    } catch (err) {
+      console.log(err);
+    }
+  }, []);
+
+  const goToGame = async () => {
     if (!game || !level) {
       alert("Selecione o jogo e o nível de dificuldade desejado!");
       return;
     }
 
-    go(`game/${game}?l=${level}`);
+    try {
+      const response = await httpClient.post("/game-result", {
+        game_id: game,
+        level_id: level,
+      });
+
+      go(`game/${response.data.id}/${response.data.first_exercise_id}`);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -49,24 +70,16 @@ function GameList(props) {
       <div className="gameActions">
         <span>Dificuldade:</span>
         <div className="levelList">
-          <div
-            onClick={() => setLevel(1)}
-            className={level === 1 ? "active box" : "box"}
-          >
-            Fácil
-          </div>
-          <div
-            onClick={() => setLevel(2)}
-            className={level === 2 ? "active box" : "box"}
-          >
-            Médio
-          </div>
-          <div
-            onClick={() => setLevel(3)}
-            className={level === 3 ? "active box" : "box"}
-          >
-            Difícil
-          </div>
+          {levelList.map((levelObj) => {
+            return (
+              <div
+                onClick={() => setLevel(levelObj.id)}
+                className={level === levelObj.id ? "active box" : "box"}
+              >
+                {levelObj.title}
+              </div>
+            );
+          })}
         </div>
 
         <Button

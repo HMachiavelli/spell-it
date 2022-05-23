@@ -1,6 +1,6 @@
 import { httpClient } from "../httpClient";
 
-const clearAuthSession = () => {
+export const clearAuthSession = () => {
   localStorage.removeItem("expire_at");
   localStorage.removeItem("access_token");
   localStorage.removeItem("role");

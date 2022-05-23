@@ -82,3 +82,7 @@
   align-items: center;
   padding: 2rem;
 }
+
+.exercise p {
+  font-size: 14px;
+}
