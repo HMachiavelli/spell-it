@@ -5,12 +5,7 @@ import { NotificationContainer } from "react-notifications";
 import Header from "../../../components/Admin/Header";
 import Sidebar from "../../../components/Admin/Sidebar";
 
-import {
-  FaRegChartBar,
-  FaGamepad,
-  FaPencilRuler,
-  FaMedal,
-} from "react-icons/fa";
+import { FaRegChartBar, FaPencilRuler, FaMedal, FaUser } from "react-icons/fa";
 
 import "./styles.css";
 import "react-notifications/lib/notifications.css";
@@ -53,6 +48,13 @@ function AdminApp(props) {
       icon: <FaMedal />,
       href: "/niveis",
       active: activeMenu === "niveis",
+      blocked: false,
+    },
+    {
+      title: "Usuários",
+      icon: <FaUser />,
+      href: "/usuarios",
+      active: activeMenu === "usuarios",
       blocked: false,
     },
   ];

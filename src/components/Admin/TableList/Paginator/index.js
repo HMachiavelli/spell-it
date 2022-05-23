@@ -5,6 +5,10 @@ import "./styles.css";
 function Paginator(props) {
   const { page, pages } = props;
 
+  if (pages <= 1) {
+    return <></>;
+  }
+
   const buildPages = (pages) => {
     let buttons = [];
     for (let i = 1; i <= pages; i++) {

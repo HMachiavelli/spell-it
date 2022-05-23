@@ -5,15 +5,20 @@ import Swal from "sweetalert2";
 import { httpClient } from "../../../../utils/httpClient";
 import TableList from "../../../../components/Admin/TableList";
 
-const header = ["#", "Jogo", "Nível", "Enunciado", "Reposta esperada", "Ações"];
+const header = ["#", "Nome", "Usuário", "Permissões", "Ações"];
 
-function LevelList() {
-  const [levelList, setLevelList] = useState([]);
+const permissions = {
+  admin: "Administrador",
+  player: "Jogador",
+};
+
+function UserList() {
+  const [userList, setUserList] = useState([]);
   const [total, setTotal] = useState(0);
 
   const onFilter = async (search, pageSize, page) => {
     try {
-      const response = await httpClient.get("/exercises", {
+      const response = await httpClient.get("/users", {
         params: {
           search,
           page,
@@ -22,7 +27,7 @@ function LevelList() {
       });
 
       setTotal(response.data.total);
-      setLevelList(mapApiResponse(response.data.list));
+      setUserList(mapApiResponse(response.data.list));
     } catch (err) {
       console.log(err);
       NotificationManager.warning(err, "Atenção!");
@@ -42,16 +47,16 @@ function LevelList() {
       reverseButtons: true,
       allowOutsideClick: () => !Swal.isLoading(),
       preConfirm: async () => {
-        // const response = await httpClient.delete(`/levels/${id}`);
+        const response = await httpClient.delete(`/users/${id}`);
 
-        // if (response.status === 200) {
-        //   return response;
-        // } else {
-        NotificationManager.warning(
-          "Não foi possível excluir este registro agora!",
-          "Atenção!"
-        );
-        // }
+        if (response.status === 200) {
+          return response;
+        } else {
+          NotificationManager.warning(
+            "Não foi possível excluir este registro agora!",
+            "Atenção!"
+          );
+        }
       },
     }).then(async (result) => {
       if (!result.isConfirmed) {
@@ -67,7 +72,9 @@ function LevelList() {
     return apiList.map((item) => {
       return {
         id: item.id,
-        title: item.title,
+        name: item.name,
+        email: item.email,
+        role: permissions[item.role] || "Desconhecido",
         onDelete,
       };
     });
@@ -75,14 +82,14 @@ function LevelList() {
 
   return (
     <TableList
-      title="Exercícios"
+      title="Usuários"
       header={header}
-      list={levelList}
+      list={userList}
       total={total}
       onFilter={onFilter}
-      addLink="/admin/exercicios/add"
+      addLink="/admin/usuarios/add"
     />
   );
 }
 
-export default LevelList;
+export default UserList;

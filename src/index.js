@@ -9,6 +9,8 @@ import ExerciseList from "./pages/Admin/Exercises/List";
 import ExerciseForm from "./pages/Admin/Exercises/Form";
 import LevelList from "./pages/Admin/Levels/List";
 import LevelForm from "./pages/Admin/Levels/Form";
+import UserList from "./pages/Admin/Users/List";
+import UserForm from "./pages/Admin/Users/Form";
 import Admin from "./pages/Admin";
 
 import Play from "./pages/Play";
@@ -35,6 +37,11 @@ ReactDOM.render(
           <Route path="" index element={<LevelList />} />
           <Route path="add" index element={<LevelForm />} />
           <Route path=":levelId" element={<LevelForm />} />
+        </Route>
+        <Route path="usuarios" element={<Outlet />}>
+          <Route path="" index element={<UserList />} />
+          <Route path="add" index element={<UserForm />} />
+          <Route path=":userId" element={<UserForm />} />
         </Route>
       </Route>
       <Route path="play" element={<Play />}>
