@@ -13,18 +13,23 @@ function Game(props) {
   const [proceed, setProceed] = useState(false);
   const [question, setQuestion] = useState("Aguarde, carregando...");
   const [receivedAnswer, setReceivedAnswer] = useState("");
+  const [current, setCurrent] = useState(1);
 
   const { gameResultId, exerciseId } = useParams();
 
   useEffect(async () => {
     try {
-      const exerciseRes = await httpClient(`/exercises/${exerciseId}`);
+      const exerciseRes = await httpClient.get(`/exercises/${exerciseId}`);
+      const gameResultRes = await httpClient.get(
+        `/game-result/${gameResultId}`
+      );
 
       setQuestion(exerciseRes.data.question);
+      setCurrent(gameResultRes.data.current_exercise);
     } catch (err) {
       alert(err);
     }
-  });
+  }, [exerciseId]);
 
   const advance = async () => {
     try {
@@ -35,6 +40,11 @@ function Game(props) {
           received_answer: receivedAnswer,
         }
       );
+
+      if (response.data.finished) {
+        go(`/play/game/${gameResultId}/finished`);
+        return;
+      }
 
       setProceed(false);
       setReceivedAnswer("");
@@ -48,7 +58,7 @@ function Game(props) {
     <div className="gameWrapper">
       <div className="gameBox">
         <div className="gameTitle">
-          <h2>Exercício 1</h2>
+          <h2>Exercício {current}</h2>
         </div>
         <h2 className="mobileTitle">Exercício 1</h2>
 
@@ -77,7 +87,7 @@ function Game(props) {
         </div>
       </div>
       <div className="gameActions">
-        <p className="progress">1/10</p>
+        <p className="progress">{current}/10</p>
 
         <Button
           onClick={async () => await advance()}
