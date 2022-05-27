@@ -9,11 +9,10 @@ function App() {
       <hr />
       <form className="login-form">
         <input placeholder="Usuário" />
-        <input placeholder="Senha" />
+        <input placeholder="Senha" type="password" />
 
         <div className="login-action">
           <Button type="submit" text="Acessar" theme="primary" width="100" />
-          <a href="#">Recuperar senha</a>
         </div>
       </form>
     </div>
