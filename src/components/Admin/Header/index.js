@@ -13,7 +13,7 @@ function Header() {
 
   const logout = () => {
     clearAuthSession();
-    go("/login");
+    go("/");
   };
 
   return (
