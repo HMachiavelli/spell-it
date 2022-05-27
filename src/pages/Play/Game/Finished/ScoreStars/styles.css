@@ -1,0 +1,19 @@
+.score {
+  position: relative;
+}
+
+.score-stars {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+.golden-stars {
+  position: absolute;
+  top: 0;
+}
+
+h2 {
+  width: 100%;
+}

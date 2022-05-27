@@ -16,6 +16,7 @@ import Admin from "./pages/Admin";
 import Play from "./pages/Play";
 import GameList from "./pages/Play/GameList";
 import Game from "./pages/Play/Game";
+import Finished from "./pages/Play/Game/Finished";
 
 import reportWebVitals from "./reportWebVitals";
 
@@ -46,6 +47,11 @@ ReactDOM.render(
       </Route>
       <Route path="play" element={<Play />}>
         <Route path="" index element={<GameList />} />
+        <Route
+          path="game/:gameResultId/finished"
+          index
+          element={<Finished />}
+        />
         <Route path="game/:gameResultId/:exerciseId" index element={<Game />} />
       </Route>
     </Routes>
