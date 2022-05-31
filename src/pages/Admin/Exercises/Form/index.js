@@ -35,7 +35,9 @@ function LevelForm() {
       setLevel(level.id);
       setAnswerType(answer_type.id);
     } catch (err) {
-      console.log(err);
+      if (err.message.indexOf("404") > -1) {
+        go("/admin/404");
+      }
       // NotificationManager.warning(err, "Atenção!");
     }
   }, []);

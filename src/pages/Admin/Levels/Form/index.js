@@ -23,8 +23,9 @@ function LevelForm() {
 
       setTitle(title);
     } catch (err) {
-      console.log(err);
-      // NotificationManager.warning(err, "Atenção!");
+      if (err.message.indexOf("404") > -1) {
+        go("/admin/404");
+      }
     }
   }, []);
 

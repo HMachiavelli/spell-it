@@ -11,6 +11,7 @@ import LevelList from "./pages/Admin/Levels/List";
 import LevelForm from "./pages/Admin/Levels/Form";
 import UserList from "./pages/Admin/Users/List";
 import UserForm from "./pages/Admin/Users/Form";
+import NotFound from "./pages/Admin/NotFound";
 import Admin from "./pages/Admin";
 
 import Play from "./pages/Play";
@@ -43,6 +44,9 @@ ReactDOM.render(
           <Route path="" index element={<UserList />} />
           <Route path="add" index element={<UserForm />} />
           <Route path=":userId" element={<UserForm />} />
+        </Route>
+        <Route path="404" element={<Outlet />}>
+          <Route path="" index element={<NotFound />} />
         </Route>
       </Route>
       <Route path="play" element={<Play />}>

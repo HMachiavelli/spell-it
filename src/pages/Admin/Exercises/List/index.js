@@ -12,7 +12,6 @@ function LevelList() {
   const [total, setTotal] = useState(0);
 
   const onFilter = async (search, pageSize, page) => {
-    console.log(pageSize, page);
     try {
       const response = await httpClient.get("/exercises", {
         params: {
@@ -25,7 +24,6 @@ function LevelList() {
       setTotal(response.data.total);
       setLevelList(mapApiResponse(response.data.list));
     } catch (err) {
-      console.log(err);
       NotificationManager.warning(err, "Atenção!");
     }
   };

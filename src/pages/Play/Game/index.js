@@ -27,7 +27,9 @@ function Game(props) {
       setQuestion(exerciseRes.data.question);
       setCurrent(gameResultRes.data.current_exercise);
     } catch (err) {
-      alert(err);
+      if (err.message.indexOf("404") > -1) {
+        go("/play");
+      }
     }
   }, [exerciseId]);
 
